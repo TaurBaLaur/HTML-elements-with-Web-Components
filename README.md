@@ -13,7 +13,7 @@ Some HTML input elements appear differently across browsers. The elements define
 ### How to use
 Include this in the `<head>` section of your HTML file:
 ```html
-	<script defer src="https://cdn.jsdelivr.net/gh/TaurBaLaur/HTML-elements-with-Web-Components@1.0.0/custom-checkbox/custom-checkbox-script.min.js"></script>
+	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-script.min.js"></script>
 ```
 Attributes: `checked`, `disabled`
 
