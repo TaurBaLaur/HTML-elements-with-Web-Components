@@ -20,7 +20,7 @@ Attributes: `checked`, `disabled`
 ### NOTES!
 - the checkbox is 30x30 px by default;
 - to change the size of the checkbox you need to set the `width` property;
-- the checkbox is and `inline-grid` element.
+- the checkbox is an `inline-grid` element.
 
 Examples:
 ```html
