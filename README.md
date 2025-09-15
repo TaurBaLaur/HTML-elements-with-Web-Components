@@ -54,6 +54,7 @@ Attributes: `checked`, `disabled`
 - the radio button is an `inline-grid` element;
 - to change the color of the radio button when checked you need to set the `--crb-c` variable/custom property;
 - to change the color of the radio button when checked and hovered you need to set the `--crb-c-h` variable/custom property.
+
 Examples:
 ```html
 	<custom-radio-button></custom-radio-button>
