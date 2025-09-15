@@ -20,11 +20,39 @@ Attributes: `checked`, `disabled`
 ### NOTES!
 - the checkbox is 30x30 px by default;
 - to change the size of the checkbox you need to set the `width` property;
-- the checkbox is an `inline-grid` element.
+- the checkbox is an `inline-grid` element;
+- to change the color of the checkbox when checked you need to set the `--cc-c` variable/custom property;
+- to change the color of the checkbox when checked and hovered you need to set the `--cc-c-h` variable/custom property.
 
 Examples:
 ```html
 	<custom-checkbox></custom-checkbox>
-	<custom-checkbox style="width: 50px;"></custom-checkbox>
 	<custom-checkbox checked disabled></custom-checkbox>
+	<custom-checkbox style="width: 50px;--cc-c:red;--cc-c-h:orangered;"></custom-checkbox>
+```
+
+## `<custom-radio-button>`
+
+| ![](custom-radio-button/looks/unchecked.png) | ![](custom-radio-button/looks/checked.png) | ![](custom-radio-button/looks/unchecked-disabled.png) | ![](custom-radio-button/looks/checked-disabled.png) |
+|:---------------:|:---------------:|:---------------:|:---------------:|
+| Unchecked       | Checked       | Unchecked & Disabled      | Checked & Disabled       |
+
+### How to use
+Include this in the `<head>` section of your HTML file:
+```html
+	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-radio-button-script.min.js"></script>
+```
+Attributes: `checked`, `disabled`
+
+### NOTES!
+- the radio button is 30x30 px by default;
+- to change the size of the radio button you need to set the `width` property;
+- the radio button is an `inline-grid` element;
+- to change the color of the radio button when checked you need to set the `--crb-c` variable/custom property;
+- to change the color of the radio button when checked and hovered you need to set the `--crb-c-h` variable/custom property.
+Examples:
+```html
+	<custom-radio-button></custom-radio-button>
+	<custom-radio-button checked disabled></custom-radio-button>
+	<custom-radio-button style="width: 50px;--crb-c:red;--crb-c-h:orangered;"></custom-radio-button>
 ```
