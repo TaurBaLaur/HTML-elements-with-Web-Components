@@ -1,8 +1,12 @@
 # HTML-elements-with-Web-Components
 Some HTML input elements appear differently across browsers. The elements defined in this repo ensure your design remains consistent across all of them. These elements are made with Web Components. 
 
+## !!!IMPORTANT!!!
+These elements are not an equivalent of existing input elements. You can't add a label to them, when submitting a form their value will not be sent, etc. These features will be added later on, but for now, if you want to use these elements and replicate the behaviour of the input elements you need to write some extra JS.
+
 ## Table of Contents
 - [`<custom-checkbox>`](#custom-checkbox)
+- [`<custom-radio-button>`](#custom-radio-button)
 
 ## `<custom-checkbox>`
 
