@@ -9,11 +9,7 @@ These elements are not an equivalent of existing input elements. You can't add a
 - [`<custom-radio-button>`](#custom-radio-button)
 
 ## `<custom-checkbox>`
-[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#cc)
-
-| ![](custom-checkbox/looks/unchecked.png) | ![](custom-checkbox/looks/checked.png) | ![](custom-checkbox/looks/unchecked-disabled.png) | ![](custom-checkbox/looks/checked-disabled.png) |
-|:---------------:|:---------------:|:---------------:|:---------------:|
-| Unchecked       | Checked       | Unchecked & Disabled      | Checked & Disabled       |
+[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#cc){:target="_blank"} 
 
 ### How to use
 Include this in the `<head>` section of your HTML file:
@@ -39,11 +35,7 @@ Examples:
 ```
 
 ## `<custom-radio-button>`
-[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#crb)
-
-| ![](custom-radio-button/looks/unchecked.png) | ![](custom-radio-button/looks/checked.png) | ![](custom-radio-button/looks/unchecked-disabled.png) | ![](custom-radio-button/looks/checked-disabled.png) |
-|:---------------:|:---------------:|:---------------:|:---------------:|
-| Unchecked       | Checked       | Unchecked & Disabled      | Checked & Disabled       |
+[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#crb){:target="_blank"} 
 
 ### How to use
 Include this in the `<head>` section of your HTML file:
