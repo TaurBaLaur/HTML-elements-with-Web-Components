@@ -9,7 +9,7 @@ These elements are not an equivalent of existing input elements. You can't add a
 - [`<custom-radio-button>`](#custom-radio-button)
 
 ## `<custom-checkbox>`
-[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#cc){:target="_blank"} 
+[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#cc)
 
 ### How to use
 Include this in the `<head>` section of your HTML file:
@@ -35,7 +35,7 @@ Examples:
 ```
 
 ## `<custom-radio-button>`
-[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#crb){:target="_blank"} 
+[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#crb)
 
 ### How to use
 Include this in the `<head>` section of your HTML file:
