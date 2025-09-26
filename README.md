@@ -9,6 +9,7 @@ These elements are not an equivalent of existing input elements. You can't add a
 - [`<custom-radio-button>`](#custom-radio-button)
 
 ## `<custom-checkbox>`
+[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#cc)
 
 | ![](custom-checkbox/looks/unchecked.png) | ![](custom-checkbox/looks/checked.png) | ![](custom-checkbox/looks/unchecked-disabled.png) | ![](custom-checkbox/looks/checked-disabled.png) |
 |:---------------:|:---------------:|:---------------:|:---------------:|
@@ -25,6 +26,8 @@ Attributes: `checked`, `disabled`
 - the checkbox is 30x30 px by default;
 - to change the size of the checkbox you need to set the `width` property;
 - the checkbox is an `inline-grid` element;
+- to change the border color of the checkbox when unchecked you need to set the `--cc-b` variable/custom property;
+- to change the border color of the checkbox when unchecked and hovered you need to set the `--cc-b-h` variable/custom property.
 - to change the color of the checkbox when checked you need to set the `--cc-c` variable/custom property;
 - to change the color of the checkbox when checked and hovered you need to set the `--cc-c-h` variable/custom property.
 
@@ -36,6 +39,7 @@ Examples:
 ```
 
 ## `<custom-radio-button>`
+[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#crb)
 
 | ![](custom-radio-button/looks/unchecked.png) | ![](custom-radio-button/looks/checked.png) | ![](custom-radio-button/looks/unchecked-disabled.png) | ![](custom-radio-button/looks/checked-disabled.png) |
 |:---------------:|:---------------:|:---------------:|:---------------:|
@@ -52,6 +56,8 @@ Attributes: `checked`, `disabled`
 - the radio button is 30x30 px by default;
 - to change the size of the radio button you need to set the `width` property;
 - the radio button is an `inline-grid` element;
+- to change the border color of the radio button when unchecked you need to set the `--crb-b` variable/custom property;
+- to change the border color of the radio button when unchecked and hovered you need to set the `--crb-b-h` variable/custom property.
 - to change the color of the radio button when checked you need to set the `--crb-c` variable/custom property;
 - to change the color of the radio button when checked and hovered you need to set the `--crb-c-h` variable/custom property.
 
