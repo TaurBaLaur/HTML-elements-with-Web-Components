@@ -5,13 +5,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML elements with Web Components</title>
 	<style>
+		*{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		
 		body{
 			background-color: black;
 			color: white;
 		}
+
+		li{
+			font-size: 20px;
+		}
+
+		.super-container{
+			display: grid;
+			grid-template-columns: 200px 1fr;
+			column-gap: 50px;
+		}
+
+		.left-container{
+			display: grid;
+			grid-template-rows: 200px 50px;
+			align-items: center;
+		}
+		.elements-container{
+			display: grid;
+			grid-template-columns: 40px 1fr 40px;
+			width: 200px;
+			height: 200px;
+			justify-items: center;
+			align-items: center;
+			border-radius: 5px;
+		}
+
+		.right-container{
+			display: grid;
+			grid-template-rows: repeat(5, 1fr);
+			height: 250px;
+		}
+
+		.row{
+			display: grid;
+			grid-template-columns: 100px repeat(4, 150px);
+			column-gap: 10px;
+			font-size: 20px;
+			align-items: center;
+		}
+
+		.text{
+			line-height: 20px;
+			padding: 10px 0;
+		}
+
+		button{
+			line-height: 20px;
+			font-size: 20px;
+			border: none;
+			background-color: white;
+			border-radius: 5px;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+
+		.bg{
+			background-color: white;
+		}
+
+		.selected-option{
+			outline: 2px solid white;
+			outline-offset: 3px;
+		}
 	</style>
+	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-script.min.js"></script>
+	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-radio-button-script.min.js"></script>
 </head>
 <body>
-	<h1>Greetings</h1>
+	<h1>HTML elements with Web Components</h1>
+	<h2><a target="_blank" href="https://github.com/TaurBaLaur/HTML-elements-with-Web-Components/tree/main">Documentation</a></h2>
+	<h2>Table of Contents</h2>
+	<ul>
+		<li>
+			<a href="#cc"><code>&lt;custom-checkbox&gt;</code></a>
+		</li>
+		<li>
+			<a href="#crb"><code>&lt;custom-radio-button&gt;</code></a>
+		</li>
+	</ul>
+	<h2 id="cc">
+		<code>&lt;custom-checkbox&gt;</code>
+	</h2>
+	<div class="super-container">
+		<div class="left-container">
+			<div class="elements-container">
+				<custom-checkbox></custom-checkbox>
+				<custom-checkbox></custom-checkbox>
+				<custom-checkbox checked disabled></custom-checkbox>
+			</div>
+			<button class="bw">black/white</button>
+		</div>
+		<div class="right-container">
+			<div class="row">
+				<div class="text">--cc-b</div>
+				<button>default</button>
+				<button>rosybrown</button>
+				<button>cyan</button>
+				<button>dodgerblue</button>
+			</div>
+			<div class="row">
+				<div class="text">--cc-b-h</div>
+				<button>default</button>
+				<button>brown</button>
+				<button>darkcyan</button>
+				<button>blue</button>
+			</div>
+			<div class="row">
+				<div class="text">--cc-c</div>
+				<button>default</button>
+				<button>red</button>
+				<button>darkgreen</button>
+				<button>deeppink</button>
+			</div>
+			<div class="row">
+				<div class="text">--cc-c-h</div>
+				<button>default</button>
+				<button>orangered</button>
+				<button>green</button>
+				<button>hotpink</button>
+			</div>
+			<div class="row">
+				<div class="text">width</div>
+				<button>default</button>
+				<button>50px</button>
+				<button>70px</button>
+				<button>100px</button>
+			</div>
+		</div>
+	</div>
+	
+	<h2 id="crb">
+		<code>&lt;custom-radio-button&gt;</code>
+	</h2>
+	<div class="super-container">
+		<div class="left-container">
+			<div class="elements-container">
+				<custom-radio-button></custom-radio-button>
+				<custom-radio-button></custom-radio-button>
+				<custom-radio-button checked disabled></custom-radio-button>
+			</div>
+			<button class="bw">black/white</button>
+		</div>
+		<div class="right-container">
+			<div class="row">
+				<div class="text">--crb-b</div>
+				<button>default</button>
+				<button>rosybrown</button>
+				<button>cyan</button>
+				<button>dodgerblue</button>
+			</div>
+			<div class="row">
+				<div class="text">--crb-b-h</div>
+				<button>default</button>
+				<button>brown</button>
+				<button>darkcyan</button>
+				<button>blue</button>
+			</div>
+			<div class="row">
+				<div class="text">--crb-c</div>
+				<button>default</button>
+				<button>red</button>
+				<button>darkgreen</button>
+				<button>deeppink</button>
+			</div>
+			<div class="row">
+				<div class="text">--crb-c-h</div>
+				<button>default</button>
+				<button>orangered</button>
+				<button>green</button>
+				<button>hotpink</button>
+			</div>
+			<div class="row">
+				<div class="text">width</div>
+				<button>default</button>
+				<button>50px</button>
+				<button>70px</button>
+				<button>100px</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		function setStyles(button){
+			let val = '';
+			const prop = button.parentElement.firstElementChild.innerText;
+			const element = button.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling;
+			if(button.innerText!=='default'){
+				val = button.innerText;
+			}		
+			element.style.setProperty(prop, val);
+		}
+
+		document.querySelectorAll('button:not(.bw)').forEach((button)=>{
+			button.addEventListener('click',(event)=>{
+				const row = event.target.parentElement;
+				if(row.selected){
+					row.selected.classList.remove('selected-option');
+				}
+				event.target.classList.add('selected-option');
+				row.selected = event.target;
+			});
+			if(button.innerText!=='default'){
+				button.style.backgroundColor = button.innerText;
+			}else{
+				button.style.backgroundColor = 'lightgrey';
+			}
+			button.addEventListener('click',(event)=>{
+				setStyles(event.target);
+			});
+		})
+		document.querySelectorAll('.bw').forEach((button)=>{
+			button.addEventListener('click',(event)=>{
+				event.target.previousElementSibling.classList.toggle('bg');
+			});
+		})
+
+		window.addEventListener('load',()=>{
+			document.querySelectorAll('.row').forEach((row)=>{
+				row.firstElementChild.nextElementSibling.classList.add('selected-option');
+				row.selected = row.firstElementChild.nextElementSibling;
+			});
+		});
+	</script>
 </body>
 </html>
