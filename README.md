@@ -16,6 +16,10 @@ Include this in the `<head>` section of your HTML file:
 ```html
 	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-script.min.js"></script>
 ```
+or in your JS file:
+```js
+	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-script.min.js';
+```
 Attributes: `checked`, `disabled`
 
 ### NOTES!
@@ -41,6 +45,10 @@ Examples:
 Include this in the `<head>` section of your HTML file:
 ```html
 	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-radio-button-script.min.js"></script>
+```
+or in your JS file:
+```js
+	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-radio-button-script.min.js';
 ```
 Attributes: `checked`, `disabled`
 
