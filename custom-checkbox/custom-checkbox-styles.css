@@ -1,0 +1,49 @@
+
+:host{
+    background: none !important;
+    display: inline-grid;
+    width: 30px;
+    height: initial !important;
+    aspect-ratio: 1 / 1;
+    container-type: size;
+    align-items: center;
+    justify-items: center;
+}
+
+.checkbox{
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid var(--cc-b,grey);
+    width: min(100%,100cqh);
+    aspect-ratio: 1/1;
+}
+
+.checkbox:hover{
+    cursor: pointer;
+    border-color: var(--cc-b-h,black);
+}
+
+.checkbox.checked,.checkbox.checked.disabled:hover{
+    background-color: var(--cc-c, rgb(25, 100, 255));
+    border-color: var(--cc-c, rgb(25, 100, 255));
+}
+
+.checkbox.checked{
+    background-image: url('https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/check-mark.svg');
+    background-size: contain;
+}
+
+.checkbox.checked:hover{
+    background-color: var(--cc-c-h,rgb(30, 90, 200));
+    border-color: var(--cc-c-h,rgb(30, 90, 200));
+}
+
+.checkbox.disabled{
+    opacity: 0.5;
+    cursor: default;
+}
+
+.checkbox.disabled:hover{
+    border: 2px solid var(--cc-b,grey);
+}
