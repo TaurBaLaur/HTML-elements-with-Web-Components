@@ -1,6 +1,7 @@
 
 :host{
     background: none !important;
+    border: none !important;
     display: inline-grid;
     width: 30px;
     height: initial !important;
@@ -46,4 +47,5 @@
 
 .checkbox.disabled:hover{
     border: 2px solid var(--cc-b,grey);
+
 }
