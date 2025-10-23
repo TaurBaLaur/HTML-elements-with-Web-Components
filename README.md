@@ -84,7 +84,11 @@ or in your JS file:
 Attributes: `type`, `value`, `placeholder`, `spellcheck`, `disabled`
 
 ### NOTES!
-- 
+- default type: `text`;
+- supported types: `text`;
+- properties: `type`, `value`, `defaultValue`, `placeholder`, `spellcheck`, `disabled`;
+- setting the `value` attribute changes the `defaultValue` property and vice versa. If the user hasn't changed the `value` property by interacting with the element or setting it with JS, changing `defaultValue` also changes `value` property;
+- to change the aspect when focused, use the `:focus-within` pseudo-class.
 
 Examples:
 ```html
