@@ -7,6 +7,7 @@ These elements are not an equivalent of existing input elements. You can't add a
 ## Table of Contents
 - [`<custom-checkbox>`](#custom-checkbox)
 - [`<custom-radio-button>`](#custom-radio-button)
+- [`<custom-input>`](#custom-input)
 
 ## `<custom-checkbox>`
 [DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#cc)
@@ -66,4 +67,28 @@ Examples:
 	<custom-radio-button></custom-radio-button>
 	<custom-radio-button checked disabled></custom-radio-button>
 	<custom-radio-button style="width: 50px;--crb-c:red;--crb-c-h:orangered;"></custom-radio-button>
+```
+
+## `<custom-input>`
+[DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#ci)
+
+### How to use
+Include this in the `<head>` section of your HTML file:
+```html
+	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-input.min.js"></script>
+```
+or in your JS file:
+```js
+	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-input.min.js';
+```
+Attributes: `type`, `value`, `placeholder`, `spellcheck`, `disabled`
+
+### NOTES!
+- 
+
+Examples:
+```html
+	<custom-input></custom-input>
+	<custom-input type="text" value="initial" disabled></custom-input>
+	<custom-input type="text" placeholder="Type..." spellcheck style="background-color:orangered;"></custom-input>
 ```
