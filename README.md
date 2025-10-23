@@ -75,11 +75,11 @@ Examples:
 ### How to use
 Include this in the `<head>` section of your HTML file:
 ```html
-	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-input.min.js"></script>
+	<script defer src="https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-input/custom-input.min.js"></script>
 ```
 or in your JS file:
 ```js
-	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-input.min.js';
+	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-input/custom-input.min.js';
 ```
 Attributes: `type`, `value`, `placeholder`, `spellcheck`, `disabled`
 
