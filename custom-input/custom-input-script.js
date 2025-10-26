@@ -22,7 +22,7 @@ class CustomInput extends HTMLElement {
 
         const linkElement = document.createElement("link");
         linkElement.setAttribute("rel", "stylesheet");
-        linkElement.setAttribute("href", "custom-input-styles.css");
+        linkElement.setAttribute("href", "https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-input/custom-input-styles.min.css");
 
         this.#shadow.appendChild(linkElement);
     }
@@ -192,3 +192,4 @@ class CustomInput extends HTMLElement {
 }
 
 customElements.define('custom-input', CustomInput);
+
