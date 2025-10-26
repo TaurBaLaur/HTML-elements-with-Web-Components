@@ -1,5 +1,5 @@
 
-:host([type="text"]){
+:host{
     border: 1px solid black;
     background-color: white;
     width: 250px;
@@ -33,7 +33,8 @@
     color: gray;
 }
 
-:host([type="text"]:not([disabled]):focus-within){
+:host(:not([disabled]):focus-within){
     outline: 1px solid black;
     border-radius: 5px;
+
 }
