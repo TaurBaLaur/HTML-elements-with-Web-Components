@@ -22,6 +22,7 @@
     scrollbar-width: none;
     text-wrap: nowrap;
     width: 100%;
+    opacity: inherit;
 }
 
 .textinput:focus-visible{
@@ -38,3 +39,4 @@
     border-radius: 5px;
 
 }
+
