@@ -13,16 +13,16 @@ class CustomInput extends HTMLElement {
 
     constructor() {
         super();
-        this.#type = 'text'; 
-        this.#value =  this.#defaultValue = this.#placeholder = '';
+        this.#type = 'text';
+        this.#value = this.#defaultValue = this.#placeholder = '';
         this.#spellcheck = this.#disabled = false;
         this.#dirtyFlag = 0;
 
-        this.#shadow = this.attachShadow({ mode: 'closed' ,delegatesFocus:true});
+        this.#shadow = this.attachShadow({ mode: 'closed', delegatesFocus: true });
 
         const linkElement = document.createElement("link");
         linkElement.setAttribute("rel", "stylesheet");
-        linkElement.setAttribute("href", "custom-input-styles.min.css");
+        linkElement.setAttribute("href", "custom-input-styles.css");
 
         this.#shadow.appendChild(linkElement);
     }
@@ -39,12 +39,12 @@ class CustomInput extends HTMLElement {
             this.#textInput = textInput;
             this.#shadow.appendChild(textInput);
 
-            this.addEventListener('pointerdown',()=>{
+            this.addEventListener('pointerdown', () => {
                 this.#pointerFocus = true;
             });
 
-            this.addEventListener('focus',()=>{
-                if(!this.#pointerFocus){
+            this.addEventListener('focus', () => {
+                if (!this.#pointerFocus) {
                     let range = document.createRange();
                     range.selectNodeContents(this.#textInput);
                     window.getSelection().removeAllRanges();
@@ -52,14 +52,14 @@ class CustomInput extends HTMLElement {
                 }
             });
 
-            this.#textInput.addEventListener('blur',()=>{
+            this.#textInput.addEventListener('blur', () => {
                 this.#pointerFocus = false;
                 this.#scrollToStart();
             });
 
-            this.#textInput.addEventListener('input',()=>{
-                if(this.#textInput.innerHTML==='<br>') {
-                    this.#textInput.innerHTML='';
+            this.#textInput.addEventListener('input', () => {
+                if (this.#textInput.innerHTML === '<br>') {
+                    this.#textInput.innerHTML = '';
                 }
                 if (!this.#dirtyFlag) {
                     this.#dirtyFlag = 1;
@@ -67,15 +67,15 @@ class CustomInput extends HTMLElement {
                 this.#value = this.#textInput.innerText;
             });
 
-            this.#textInput.addEventListener('keydown',(event)=>{
-                if(event.key==='Enter'){
+            this.#textInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
                     event.preventDefault();
                     this.#textInput.blur();
                     this.#scrollToStart();
                 }
             });
         } else {
-            this.#type === 'text'
+            this.#type = 'text';
             this.connectedCallback();
         }
     }
@@ -86,24 +86,22 @@ class CustomInput extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (newValue !== oldValue) {
-            if ( name==='type' ) {
-                if(newValue!=='text'){
-                    this.setAttribute('type',oldValue?oldValue:'text');
-                }
+            if (name === 'type') {
+                this.setAttribute('type', 'text');
             } else if (name === 'value') {
                 this.#defaultValue = newValue;
                 if (!this.#dirtyFlag) {
                     this.#value = newValue;
-                    if(this.#textInput){
+                    if (this.#textInput) {
                         this.#textInput.innerText = newValue;
                     }
                 }
             } else if (name === 'placeholder') {
                 if (newValue === null) {
-                    this.#placeholder='';
+                    this.#placeholder = '';
                     this.#textInput?.removeAttribute(name);
                 } else {
-                    this.#placeholder=newValue;
+                    this.#placeholder = newValue;
                     this.#textInput?.setAttribute(name, newValue);
                 }
             } else if (name === 'spellcheck') {
@@ -117,25 +115,27 @@ class CustomInput extends HTMLElement {
             } else if (name === 'disabled') {
                 if (newValue === null) {
                     this.#disabled = false;
+                    if (this.#textInput && this.#textInput.innerHTML.includes('<br>')) {
+                        this.#textInput.innerHTML = '';
+                    }
                     this.#textInput?.setAttribute('contenteditable', 'plaintext-only');
                 } else {
                     this.#disabled = true;
+                    if (this.#textInput && this.#value.trim() === '' && this.#placeholder.trim() === '') {
+                        this.#textInput.innerHTML = '<br>';
+                    }
                     this.#textInput?.removeAttribute('contenteditable');
                 }
-            }  
+            }
         }
     }
 
-    get disabled() {
-        return this.#disabled;
+    get type() {
+        return this.#type;
     }
 
-    set disabled(val) {
-        if (val) { 
-            this.setAttribute('disabled', ''); 
-        } else {
-            this.removeAttribute('disabled');
-        }
+    set type(val) {
+        this.setAttribute('type', val);
     }
 
     get value() {
@@ -155,19 +155,7 @@ class CustomInput extends HTMLElement {
     }
 
     set defaultValue(val) {
-        this.setAttribute('value',val);
-    }
-
-    get spellcheck() {
-        return this.#spellcheck;
-    }
-
-    set spellcheck(val) {
-        if (val) { 
-            this.setAttribute('spellcheck', ''); 
-        } else {
-            this.removeAttribute('spellcheck');
-        }
+        this.setAttribute('value', val);
     }
 
     get placeholder() {
@@ -176,6 +164,30 @@ class CustomInput extends HTMLElement {
 
     set placeholder(val) {
         this.setAttribute('placeholder', val);
+    }
+
+    get spellcheck() {
+        return this.#spellcheck;
+    }
+
+    set spellcheck(val) {
+        if (val) {
+            this.setAttribute('spellcheck', '');
+        } else {
+            this.removeAttribute('spellcheck');
+        }
+    }
+
+    get disabled() {
+        return this.#disabled;
+    }
+
+    set disabled(val) {
+        if (val) {
+            this.setAttribute('disabled', '');
+        } else {
+            this.removeAttribute('disabled');
+        }
     }
 }
 
