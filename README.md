@@ -21,22 +21,29 @@ or in your JS file:
 ```js
 	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-script.min.js';
 ```
-Attributes: `checked`, `disabled`
+Attributes: `checked`, `disabled`, `name`, `value`, `tabindex`.
+
+States: `checked`, `disabled`, `focused`, `active`. In order to style the checkboxes depending on the state use the `:state()` pseudo-class.
 
 ### NOTES!
 - the checkbox is 30x30 px by default;
 - to change the size of the checkbox you need to set the `width` property;
-- the checkbox is an `inline-grid` element;
-- to change the border color of the checkbox when unchecked you need to set the `--cc-b` variable/custom property;
-- to change the border color of the checkbox when unchecked and hovered you need to set the `--cc-b-h` variable/custom property.
-- to change the color of the checkbox when checked you need to set the `--cc-c` variable/custom property;
-- to change the color of the checkbox when checked and hovered you need to set the `--cc-c-h` variable/custom property.
+- the checkbox is an `inline-grid` element.
 
 Examples:
 ```html
 	<custom-checkbox></custom-checkbox>
 	<custom-checkbox checked disabled></custom-checkbox>
-	<custom-checkbox style="width: 50px;--cc-c:red;--cc-c-h:orangered;"></custom-checkbox>
+	<custom-checkbox style="width: 50px;"></custom-checkbox>
+```
+
+```html
+	<style>
+		custom-checkbox:state(checked){
+            background-color: green;
+        }
+	</style>
+	<custom-checkbox style="width: 50px;"></custom-checkbox>
 ```
 
 ## `<custom-radio-button>`
