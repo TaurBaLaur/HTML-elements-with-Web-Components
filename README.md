@@ -73,7 +73,8 @@ States: `checked`, `disabled`, `focused`, `active`. In order to style the checkb
 ### NOTES!
 - the radio button is 30x30 px by default;
 - to change the size of the radio button you need to set the `width` property;
-- the radio button is an `inline-grid` element.
+- the radio button is an `inline-grid` element;
+- if the radio group doesn't have a `custom-form` ancestor, then you can check multiple radio buttons with the same name, if they have different parents.
 
 Examples:
 ```html
