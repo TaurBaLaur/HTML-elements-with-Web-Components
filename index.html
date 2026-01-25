@@ -88,19 +88,19 @@
 			outline-offset: 3px;
 		}
 
-		custom-checkbox:state(checked):not(:state(focused), :state(active), :hover).cc-s-c{
+		:is(custom-checkbox, custom-radio-button):state(checked):not(:state(focused), :state(active), :hover).cc-s-c{
 			background-color: var(--cc-s-c);
 			border-color: var(--cc-s-c);
 		}
-		custom-checkbox:state(checked):hover.cc-s-c-h{
+		:is(custom-checkbox, custom-radio-button):state(checked):hover.cc-s-c-h{
 			background-color: var(--cc-s-c-h);
 			border-color: var(--cc-s-c-h);
 		}
-		custom-checkbox:state(checked):state(focused):not(:state(active)).cc-s-cf{
+		:is(custom-checkbox, custom-radio-button):state(checked):state(focused):not(:state(active)).cc-s-cf{
 			background-color: var(--cc-s-cf);
 			border-color: black;
 		}
-		custom-checkbox:state(checked):state(active).cc-s-ca{ 
+		:is(custom-checkbox, custom-radio-button):state(checked):state(active).cc-s-ca{ 
 			background-color: var(--cc-s-ca);
 			border-color: var(--cc-s-ca);
 		}
@@ -189,35 +189,35 @@
 		</div>
 		<div class="right-container">
 			<div class="row">
-				<div class="text">--crb-b</div>
+				<div class="text" data-prop="--cc-s-c">checked</div>
 				<button>default</button>
 				<button>rosybrown</button>
 				<button>cyan</button>
 				<button>dodgerblue</button>
 			</div>
 			<div class="row">
-				<div class="text">--crb-b-h</div>
+				<div class="text" data-prop="--cc-s-c-h">hover</div>
 				<button>default</button>
 				<button>brown</button>
 				<button>darkcyan</button>
 				<button>blue</button>
 			</div>
 			<div class="row">
-				<div class="text">--crb-c</div>
+				<div class="text" data-prop="--cc-s-cf">focused</div>
 				<button>default</button>
 				<button>red</button>
 				<button>darkgreen</button>
 				<button>deeppink</button>
 			</div>
 			<div class="row">
-				<div class="text">--crb-c-h</div>
+				<div class="text" data-prop="--cc-s-ca">active</div>
 				<button>default</button>
 				<button>orangered</button>
 				<button>green</button>
 				<button>hotpink</button>
 			</div>
 			<div class="row">
-				<div class="text">width</div>
+				<div class="text" data-prop="width">width</div>
 				<button>default</button>
 				<button>50px</button>
 				<button>70px</button>
@@ -261,12 +261,13 @@
 		function setStyles(button){
 			let val = '', prop;
 			const element = button.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling;
-			if(button.parentElement.parentElement.parentElement.previousElementSibling.innerText==='<custom-checkbox>'){
+			if(button.parentElement.parentElement.parentElement.previousElementSibling.innerText!=='<custom-input>'){
 				prop = button.parentElement.firstElementChild.dataset.prop;
 				if(button.innerText==='default' && prop==='width'){
 					element.style.width='';
 				}else if(button.innerText==='default'){
-					element.className='';
+					element.classList.remove(prop.substring(2))
+					element.style.removeProperty(prop);
 				}else{
 					val = button.innerText;
 					if(prop!=='width'){

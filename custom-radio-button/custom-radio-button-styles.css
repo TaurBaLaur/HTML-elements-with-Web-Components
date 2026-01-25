@@ -1,47 +1,58 @@
 
 :host{
-    background: none !important;
-    border: none !important;
-    display: inline-grid;
-    width: 30px;
-    height: initial !important;
-    aspect-ratio: 1 / 1;
-    container-type: size;
-    align-items: center;
-    justify-items: center;
-}
-
-.radio-button{
     box-sizing: border-box;
-    border: 2px solid var(--crb-b,grey);
-    border-radius: 50%;
-    padding: min(20%,20cqh);
-    width: min(100%,100cqh);
+    background: white;
     aspect-ratio: 1 / 1;
+    width: 30px;
+    height: fit-content !important;
+    display: inline-grid !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-color: gray;
+    border-radius: 50% !important;
+    min-inline-size: fit-content !important;
+    user-select: none !important;
     background-clip: content-box;
 }
 
-.radio-button:hover{
+:host(:hover){
     cursor: pointer;
     border-color: black;
 }
 
-.radio-button.checked, .radio-button.checked.disabled:hover{
-    background-color: var(--crb-c, rgb(25, 100, 255));
-    border-color: var(--crb-c, rgb(25, 100, 255));
+:host(:state(checked)),:host(:state(checked):state(disabled):hover){
+    background-color: rgb(25, 100, 255);
+    border-color: rgb(25, 100, 255);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='100%' width='100%' fill='none' stroke='white' stroke-width='20%'><circle cx='50%' cy='50%' r='40%'/></svg>");
 }
 
-.radio-button.checked:hover{
-    background-color: var(--crb-c-h, rgb(30, 90, 200));
-    border-color: var(--crb-c-h, rgb(30, 90, 200));
+:host(:state(checked):hover){
+    background-color: rgb(30, 90, 200);
+    border-color: rgb(30, 90, 200);
 }
 
-.radio-button.disabled{
+:host(:state(disabled)){
     opacity: 0.5;
     cursor: default;
 }
 
-.radio-button.disabled:hover{
-    border-color: var(--crb-b,grey);
-    background-color: white;
+:host(:state(disabled):hover){
+    border-color: gray;
+}
+
+:focus-visible{
+    outline: none;
+}
+
+:host(:not(:state(disabled)):state(focused)){
+    border-color: black;
+}
+
+:host(:not(:state(disabled)):state(focused):state(checked)){
+    background-color: rgb(30, 90, 200);
+}
+
+:host(:not(:state(disabled)):state(checked):state(active)){
+    background-color: rgb(60, 120, 255);
+    border-color: rgb(60, 120, 255);
 }

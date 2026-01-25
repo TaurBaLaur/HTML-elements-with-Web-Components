@@ -58,23 +58,39 @@ or in your JS file:
 ```js
 	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-radio-button/custom-radio-button-script.min.js';
 ```
-Attributes: `checked`, `disabled`
+Attributes: `checked`, `disabled`, `name`, `value`, `tabindex`.
+
+States: `checked`, `disabled`, `focused`, `active`. In order to style the checkboxes depending on the state use the `:state()` pseudo-class.
+
+### EVENTS
+
+#### custom-change
+- triggered when the radio button is checked;
+- it `bubbles`;
+- the `detail` property is an object with the following properties: `checked`, `name`, `value`.
+
 
 ### NOTES!
 - the radio button is 30x30 px by default;
 - to change the size of the radio button you need to set the `width` property;
-- the radio button is an `inline-grid` element;
-- to change the border color of the radio button when unchecked you need to set the `--crb-b` variable/custom property;
-- to change the border color of the radio button when unchecked and hovered you need to set the `--crb-b-h` variable/custom property.
-- to change the color of the radio button when checked you need to set the `--crb-c` variable/custom property;
-- to change the color of the radio button when checked and hovered you need to set the `--crb-c-h` variable/custom property.
+- the radio button is an `inline-grid` element.
 
 Examples:
 ```html
 	<custom-radio-button></custom-radio-button>
 	<custom-radio-button checked disabled></custom-radio-button>
-	<custom-radio-button style="width: 50px;--crb-c:red;--crb-c-h:orangered;"></custom-radio-button>
+	<custom-radio-button style="width: 50px;"></custom-radio-button>
 ```
+
+```html
+	<style>
+		custom-radio-button:state(checked){
+            background-color: green;
+        }
+	</style>
+	<custom-radio-button style="width: 50px;"></custom-radio-button>
+```
+
 
 ## `<custom-input>`
 [DEMO](https://taurbalaur.github.io/HTML-elements-with-Web-Components/#ci)
