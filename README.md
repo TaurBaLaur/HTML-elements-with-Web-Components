@@ -25,6 +25,13 @@ Attributes: `checked`, `disabled`, `name`, `value`, `tabindex`.
 
 States: `checked`, `disabled`, `focused`, `active`. In order to style the checkboxes depending on the state use the `:state()` pseudo-class.
 
+### EVENTS
+
+#### custom-change
+- triggered when the checkbox is checked/unchecked;
+- it `bubbles`;
+- the `detail` property is an object with the following properties: `checked`, `name`, `value`.
+
 ### NOTES!
 - the checkbox is 30x30 px by default;
 - to change the size of the checkbox you need to set the `width` property;

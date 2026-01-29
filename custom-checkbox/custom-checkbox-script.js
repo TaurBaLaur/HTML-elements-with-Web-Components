@@ -1,33 +1,30 @@
 
 class CustomCheckbox extends HTMLElement {
-    #value; #defaultChecked;
-    #tabIndex; #name;
+    #value; #defaultChecked; #tabIndex;
     #dirtyCheckedness;
     #checkbox;
     #pointerFocused; #lastClicked;
-
     #internals;
 
     constructor() {
         super();
         this.#value = 'on';
-        this.#defaultChecked = false;
-        this.#dirtyCheckedness = this.#tabIndex = 0;
-        const shadow = this.attachShadow({ mode: 'closed' });
-
+        this.#defaultChecked = this.#dirtyCheckedness = false;
+        this.#tabIndex = 0;
         this.#internals = this.attachInternals();
+
+        const shadow = this.attachShadow({ mode: 'closed' });
 
         const linkElement = document.createElement("link");
         linkElement.setAttribute("rel", "stylesheet");
-        linkElement.setAttribute("href", "https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-styles.css");
-
+        linkElement.setAttribute("href", "https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-styles.min.css");
         shadow.appendChild(linkElement);
+        
         const checkbox = document.createElement('div');
         checkbox.setAttribute('tabindex', '0');
+        shadow.appendChild(checkbox);
 
         this.#checkbox = checkbox;
-
-        shadow.appendChild(checkbox);
     }
 
     #toggleChecked() {
@@ -42,6 +39,15 @@ class CustomCheckbox extends HTMLElement {
     #handleClick() {
         this.#checkbox.blur();
         this.#toggleChecked();
+        this.dispatchEvent(new CustomEvent("custom-change", {
+                bubbles: true,
+                detail:{
+                    checked: this.checked,
+                    name: this.getAttribute('name'),
+                    value: this.value
+                }
+            }
+        ));
     }
 
     connectedCallback() {
@@ -50,30 +56,33 @@ class CustomCheckbox extends HTMLElement {
             this.#pointerFocused = true;
             this.#lastClicked = this;
         });
+
         document.addEventListener('pointerup', (event) => {
             if (event.target === this.#lastClicked) {
-                this.#internals.states.delete("active");
                 this.#handleClick();
-            } else if (this.#lastClicked === this) {
-                this.#internals.states.delete("active");
-            }
+            } 
+            this.#internals.states.delete("active");
             this.#pointerFocused = false;
             this.#lastClicked = null;
         });
+
         this.#checkbox.addEventListener('focus', () => {
             if (!this.#pointerFocused) {
                 this.#internals.states.add("focused");
             }
         });
+
         this.#checkbox.addEventListener('blur', () => {
             this.#internals.states.delete("focused");
         });
+
         this.addEventListener('keydown', (event) => {
             if (event.code === 'Space' && this.#internals.states.has("focused")) {
                 event.preventDefault();
             }
             this.#internals.states.add("active");
         });
+        
         this.addEventListener('keyup', (event) => {
             if (this.#internals.states.has("focused")) {
                 if (event.code === 'Space') {
@@ -120,7 +129,9 @@ class CustomCheckbox extends HTMLElement {
                     }
                 }
             } else if (name === 'name') {
-                this.#name = String(newValue);
+                if(newValue===''){
+                    this.removeAttribute('name');
+                }
             } else if (name === 'value') {
                 if (newValue === null) {
                     this.#value = 'on';
@@ -176,7 +187,7 @@ class CustomCheckbox extends HTMLElement {
     }
 
     get name() {
-        return this.#name;
+        return this.getAttribute('name');
     }
 
     set name(val) {
