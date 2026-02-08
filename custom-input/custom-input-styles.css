@@ -10,7 +10,7 @@
     cursor: text;
 }
 
-:host([disabled]){
+:host(:state(disabled)){
     cursor:default;
     opacity: 50%;
 }
@@ -32,11 +32,10 @@
 .textinput:empty::before {
     content: attr(placeholder);
     color: gray;
+    display: inline-grid;
 }
 
-:host(:not([disabled]):focus-within){
+:host(:not(:state(disabled)):state(focused)){
     outline: 1px solid black;
     border-radius: 5px;
-
 }
-

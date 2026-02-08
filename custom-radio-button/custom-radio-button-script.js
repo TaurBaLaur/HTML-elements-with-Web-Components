@@ -27,63 +27,62 @@ class CustomRadioButton extends HTMLElement {
         this.#radioButton = radioButton;
     }
 
-    #handleCheck(clicked=false){
-        if(this.name){
+    #handleCheck(clicked = false) {
+        if (this.name) {
             this.#uncheckOtherElementFromGroup();
         }
-        if(clicked){
+        if (clicked) {
             this.#radioButton.blur();
         }
-        if(!this.#internals.states.has("checked")){
+        if (!this.#internals.states.has("checked")) {
             this.#internals.states.add("checked");
-            if(clicked){
+            if (clicked) {
                 this.dispatchEvent(new CustomEvent("custom-change", {
-                        bubbles: true,
-                        detail:{
-                            checked: this.checked,
-                            name: this.getAttribute('name'),
-                            value: this.value
-                        }
+                    bubbles: true,
+                    detail: {
+                        checked: this.checked,
+                        name: this.getAttribute('name'),
+                        value: this.value
                     }
-                ));
+                }));
             }
         }
     }
 
-    #uncheckOtherElementFromGroup(){
-        if(this.#reportToElement){
+    #uncheckOtherElementFromGroup() {
+        if (this.#reportToElement) {
             const currentlyCheckedFromGroup = this.#getCurrentlyCheckedFromGroup();
-            if(currentlyCheckedFromGroup){
-                currentlyCheckedFromGroup.checked=false;
+            if (currentlyCheckedFromGroup) {
+                currentlyCheckedFromGroup.checked = false;
             }
-        } 
+        }
     }
 
-    #getCurrentlyCheckedFromGroup(){
+    #getCurrentlyCheckedFromGroup() {
         let checkedElements;
 
-        if(this.#reportToElement.tagName==='CUSTOM-FORM'){
+        if (this.#reportToElement.tagName === 'CUSTOM-FORM') {
             checkedElements = this.#reportToElement.querySelectorAll(`custom-radio-button:state(checked)[name=${this.getAttribute('name')}]`);
-        }else{
+        } else {
             checkedElements = this.#reportToElement.querySelectorAll(`custom-radio-button:state(checked)[name=${this.getAttribute('name')}]:not(custom-form *)`);
         }
-        
-        if(!checkedElements || !checkedElements.length){
+
+        if (!checkedElements || !checkedElements.length) {
             return null;
-        }else if(checkedElements[0]===this){
+        } else if (checkedElements[0] === this) {
             return checkedElements[1];
-        }else{
+        } else {
             return checkedElements[0];
         }
     }
 
     connectedCallback() {
         this.#reportToElement = this.closest('custom-form');
-        if(!this.#reportToElement){
+        if (!this.#reportToElement) {
             this.#reportToElement = this.parentElement;
         }
 
-        if(this.checked){
+        if (this.checked) {
             this.#handleCheck();
         }
 
@@ -92,16 +91,20 @@ class CustomRadioButton extends HTMLElement {
             this.#pointerFocused = true;
             this.#lastClicked = this;
         });
-        
+
         document.addEventListener('pointerup', (event) => {
             if (event.target === this.#lastClicked) {
-                if(!this.disabled){
+                if (!this.disabled) {
                     this.#handleCheck(true);
                 }
             }
             this.#internals.states.delete("active");
             this.#pointerFocused = false;
             this.#lastClicked = null;
+        });
+
+        window.addEventListener('blur', () => {
+            this.#internals.states.delete("active");
         });
 
         this.#radioButton.addEventListener('focus', () => {
@@ -124,7 +127,7 @@ class CustomRadioButton extends HTMLElement {
         this.addEventListener('keyup', (event) => {
             if (this.#internals.states.has("focused")) {
                 if (event.code === 'Space') {
-                    if(!this.disabled){
+                    if (!this.disabled) {
                         this.#handleCheck();
                     }
                     this.#internals.states.delete("active");
@@ -168,9 +171,9 @@ class CustomRadioButton extends HTMLElement {
                     }
                 }
             } else if (name === 'name') {
-                if(newValue===''){
+                if (newValue === '') {
                     this.removeAttribute('name');
-                } else if(newValue && this.checked) {
+                } else if (newValue && this.checked) {
                     this.#uncheckOtherElementFromGroup();
                 }
             } else if (name === 'value') {

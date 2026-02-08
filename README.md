@@ -112,14 +112,27 @@ or in your JS file:
 ```js
 	import 'https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-input/custom-input.min.js';
 ```
-Attributes: `type`, `value`, `placeholder`, `spellcheck`, `disabled`
+Attributes: `type`, `placeholder`, `spellcheck`, `disabled`, `tabindex`, `name`, `value`.
+
+States: `disabled`, `focused`, `active`. In order to style the inputs depending on the state use the `:state()` pseudo-class.
+
+### EVENTS
+
+#### custom-change
+- triggered when the input loses focus and the value has changed durring the interaction;
+- it `bubbles`;
+- the `detail` property is an object with the following properties: `name`, `value`.
+
+#### custom-input
+- triggered when the value changes;
+- it `bubbles`;
+- the `detail` property is an object with the following properties: `name`, `value`.
 
 ### NOTES!
 - default type: `text`;
 - supported types: `text`;
-- properties: `type`, `value`, `defaultValue`, `placeholder`, `spellcheck`, `disabled`;
-- setting the `value` attribute changes the `defaultValue` property and vice versa. If the user hasn't changed the `value` property by interacting with the element or setting it with JS, changing `defaultValue` also changes `value` property;
-- to change the aspect when focused, use the `:focus-within` pseudo-class.
+- properties: `type`, `placeholder`, `spellcheck`, `disabled`, `tabindex`, `name`, `value`, `defaultValue`;
+- setting the `value` attribute changes the `defaultValue` property and vice versa. If the user hasn't changed the `value` property by interacting with the element or setting it with JS, changing `defaultValue` also changes `value` property.
 
 Examples:
 ```html

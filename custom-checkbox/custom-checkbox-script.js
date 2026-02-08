@@ -19,7 +19,7 @@ class CustomCheckbox extends HTMLElement {
         linkElement.setAttribute("rel", "stylesheet");
         linkElement.setAttribute("href", "https://taurbalaur.github.io/HTML-elements-with-Web-Components/custom-checkbox/custom-checkbox-styles.min.css");
         shadow.appendChild(linkElement);
-        
+
         const checkbox = document.createElement('div');
         checkbox.setAttribute('tabindex', '0');
         shadow.appendChild(checkbox);
@@ -40,14 +40,13 @@ class CustomCheckbox extends HTMLElement {
         this.#checkbox.blur();
         this.#toggleChecked();
         this.dispatchEvent(new CustomEvent("custom-change", {
-                bubbles: true,
-                detail:{
-                    checked: this.checked,
-                    name: this.getAttribute('name'),
-                    value: this.value
-                }
+            bubbles: true,
+            detail: {
+                checked: this.checked,
+                name: this.getAttribute('name'),
+                value: this.value
             }
-        ));
+        }));
     }
 
     connectedCallback() {
@@ -60,10 +59,14 @@ class CustomCheckbox extends HTMLElement {
         document.addEventListener('pointerup', (event) => {
             if (event.target === this.#lastClicked) {
                 this.#handleClick();
-            } 
+            }
             this.#internals.states.delete("active");
             this.#pointerFocused = false;
             this.#lastClicked = null;
+        });
+
+        window.addEventListener('blur', () => {
+            this.#internals.states.delete("active");
         });
 
         this.#checkbox.addEventListener('focus', () => {
@@ -82,7 +85,7 @@ class CustomCheckbox extends HTMLElement {
             }
             this.#internals.states.add("active");
         });
-        
+
         this.addEventListener('keyup', (event) => {
             if (this.#internals.states.has("focused")) {
                 if (event.code === 'Space') {
@@ -129,7 +132,7 @@ class CustomCheckbox extends HTMLElement {
                     }
                 }
             } else if (name === 'name') {
-                if(newValue===''){
+                if (newValue === '') {
                     this.removeAttribute('name');
                 }
             } else if (name === 'value') {

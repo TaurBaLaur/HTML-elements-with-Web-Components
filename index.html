@@ -52,10 +52,6 @@
 			height: 250px;
 		}
 
-		.left-container:has(.input-container)~.right-container>.row{
-			grid-template-columns: 260px repeat(3, 150px);
-		}
-
 		.row{
 			display: grid;
 			grid-template-columns: 100px repeat(4, 150px);
@@ -92,15 +88,15 @@
 			background-color: var(--cc-s-c);
 			border-color: var(--cc-s-c);
 		}
-		:is(custom-checkbox, custom-radio-button):state(checked):hover.cc-s-c-h{
+		:is(custom-checkbox, custom-radio-button):state(checked):hover.cc-s-c-h, custom-input:hover.cc-s-c-h{
 			background-color: var(--cc-s-c-h);
 			border-color: var(--cc-s-c-h);
 		}
-		:is(custom-checkbox, custom-radio-button):state(checked):state(focused):not(:state(active)).cc-s-cf{
+		:is(custom-checkbox, custom-radio-button):state(checked):state(focused):not(:state(active)).cc-s-cf, custom-input:state(focused):not(:state(active)).cc-s-cf{
 			background-color: var(--cc-s-cf);
 			border-color: black;
 		}
-		:is(custom-checkbox, custom-radio-button):state(checked):state(active).cc-s-ca{ 
+		:is(custom-checkbox, custom-radio-button):state(checked):state(active).cc-s-ca, custom-input:state(active).cc-s-ca{ 
 			background-color: var(--cc-s-ca);
 			border-color: var(--cc-s-ca);
 		}
@@ -244,14 +240,30 @@
 				<button>default</button>
 			</div>
 			<div class="row">
-				<div class="text">background-color</div>
+				<div class="text" data-prop="--cc-s-c-h">hover</div>
+				<button>default</button>
+				<button>brown</button>
+				<button>darkcyan</button>
+				<button>blue</button>
+			</div>
+			<div class="row">
+				<div class="text" data-prop="--cc-s-cf">focused</div>
 				<button>default</button>
 				<button>red</button>
 				<button>darkgreen</button>
+				<button>deeppink</button>
 			</div>
 			<div class="row">
-				<div class="text">height</div>
+				<div class="text" data-prop="--cc-s-ca">active</div>
 				<button>default</button>
+				<button>orangered</button>
+				<button>green</button>
+				<button>hotpink</button>
+			</div>
+			<div class="row">
+				<div class="text" data-prop="height">height</div>
+				<button>default</button>
+				<button>50px</button>
 				<button>70px</button>
 				<button>100px</button>
 			</div>
@@ -261,24 +273,16 @@
 		function setStyles(button){
 			let val = '', prop;
 			const element = button.parentElement.parentElement.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling;
-			if(button.parentElement.parentElement.parentElement.previousElementSibling.innerText!=='<custom-input>'){
-				prop = button.parentElement.firstElementChild.dataset.prop;
-				if(button.innerText==='default' && prop==='width'){
-					element.style.width='';
-				}else if(button.innerText==='default'){
-					element.classList.remove(prop.substring(2))
-					element.style.removeProperty(prop);
-				}else{
-					val = button.innerText;
-					if(prop!=='width'){
-						element.classList.add(prop.substring(2));
-					}
-					element.style.setProperty(prop, val);
-				}
+			prop = button.parentElement.firstElementChild.dataset.prop;
+			if(button.innerText==='default' && (prop==='width' || prop==='height')){
+				element.style.setProperty(prop, '');
+			}else if(button.innerText==='default'){
+				element.classList.remove(prop.substring(2))
+				element.style.removeProperty(prop);
 			}else{
-				prop = button.parentElement.firstElementChild.innerText;
-				if(button.innerText!=='default'){
-					val = button.innerText;
+				val = button.innerText;
+				if(prop!=='width' && prop!=='height'){
+					element.classList.add(prop.substring(2));
 				}
 				element.style.setProperty(prop, val);
 			}
